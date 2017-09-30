@@ -12,7 +12,11 @@ class BooksController < ApplicationController
     end
  
     def show
-
+        if @book.reviews.blank?
+            @avarage_review = 0
+            else
+                @avarage_review = @book.reviews.avarage(:rating).round(2)
+        end
     end
     
     def new
