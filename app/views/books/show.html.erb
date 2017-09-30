@@ -11,6 +11,17 @@
 </div>
 
 </div>
+<div class = "row">
+    <div class = "col-md-4">
+        <%= render @book.reviews %>
+        <div>
+             <%= link_to "Add Review", new_book_review_path(@book) %>
+        </div>
+    </div>
+    
+    
+    
+</div>
 <%= link_to "Back" ,  root_path %>
 
 <!--only able signed in users to use edit and delete-->
@@ -21,3 +32,16 @@
 <%= link_to "Delete", book_path(@book), method: :delete, data: ( confirm = "Are you sure?" ) %>
 <% end %>
 <% end %>
+
+
+<!--raty code for star reviewing-->
+<script>
+    $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+        
+    })
+</script>
